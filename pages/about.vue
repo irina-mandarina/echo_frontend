@@ -1,11 +1,12 @@
 <template>
-$END$
+    <div class="layout-container">
+        <NuxtLayout>
+            <h1>About</h1>
+        </NuxtLayout>
+    </div>
 </template>
 
-<script>
-export default {
-name: "about"
-}
+<script setup lang="ts">
 </script>
 
 <style scoped>
