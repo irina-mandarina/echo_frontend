@@ -9,6 +9,15 @@
     <Link href="https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
 </template>
 
+<script setup>
+    const { $graphql } = useNuxtApp()
+    import { useUserStore } from '~/stores/userStore'
+
+    $graphql.default.setHeader('authorization', `Bearer ${localStorage.getItem('jwt')}`)
+    const userStore = useUserStore()
+    userStore.init()
+</script>
+
 <style>
     @font-face {
         src: url("/assets/RubikOne-Regular.ttf");
