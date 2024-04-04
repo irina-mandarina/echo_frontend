@@ -10,9 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.6",
     "@pinia/nuxt": "^0.5.1",
     "autoprefixer": "^10.4.17",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
     "nuxt": "^3.10.3",
     "pinia": "^2.1.7",
     "postcss": "^8.4.35",
@@ -22,8 +23,6 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.11.4",
-    "graphql": "^16.8.1",
-    "nuxt-graphql-request": "^7.0.5",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "typescript": "^5.3.3",

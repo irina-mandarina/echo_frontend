@@ -7,10 +7,14 @@
                 </h1>
                 <div class="flex flex-row mt-4">
                     <div class="flex flex-col w-1/2 mx-auto h-full">
-                        <EchoInput class="my-2" label="Email" validation="" />
-                        <EchoInput class="my-2" label="Password" validation="" />
+                        <EchoInput :value="username" @update:value="username=$event" class="my-2" label="Email" validation="" />
+                        <EchoInput :value="password" @update:value="password=$event"class="my-2" label="Password" validation="" />
+                        
+                        <div v-if="userStore.errorMessage" class="text-red-500 text-sm">
+                            {{ userStore.errorMessage }}
+                        </div>
 
-                        <EchoButton class="w-1/2 mx-auto my-4">
+                        <EchoButton @click="logIn" class="w-1/2 mx-auto my-4">
                             Log in
                         </EchoButton>
                     </div>
@@ -36,6 +40,22 @@
 </template>
 
 <script setup lang="ts">
+    import { getJWT } from '~/lib/localStorageUtil';
+import { useUserStore } from '~/stores/userStore'
+
+    const userStore = useUserStore()
+    const username = ref('')
+    const password = ref('')
+
+    async function logIn() {
+        console.log('Logging in: ', username.value, password.value)  
+        await userStore.logIn(username.value, password.value)
+        console.log('JWT: ' + getJWT())
+        if (userStore.errorMessage) {
+            return
+        }
+        navigateTo('/')
+    }
 </script>
 
 <style scoped>

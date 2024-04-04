@@ -10,12 +10,6 @@
 </template>
 
 <script setup>
-    const { $graphql } = useNuxtApp()
-    import { useUserStore } from '~/stores/userStore'
-
-    $graphql.default.setHeader('authorization', `Bearer ${localStorage.getItem('jwt')}`)
-    const userStore = useUserStore()
-    userStore.init()
 </script>
 
 <style>

@@ -4,23 +4,27 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true
   },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxtjs/axios', 'nuxt-graphql-request'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
   css: [
     '@/assets/main.css'
   ],
-  build: {
-    transpile: ['nuxt-graphql-request'],
-  },
-  graphql: {
-    clients: {
-      default: {
-        endpoint: 'http://localhost:8080/graphql',
-        options: {
-          // headers: {
-          //   authorization: 'Bearer MY_TOKEN',
-          // },
-        },
-      },
-    },
-  },
+  runtimeConfig: {
+
+    graphqlEndpoint: 'http://localhost:8080/graphql'
+  }
+  // build: {
+  //   transpile: ['nuxt-graphql-request'],
+  // },
+  // graphql: {
+  //   clients: {
+  //     default: {
+  //       endpoint: 'http://localhost:8080/graphql',
+  //       options: {
+  //         // headers: {
+  //         //   authorization: 'Bearer MY_TOKEN',
+  //         // },
+  //       },
+  //     },
+  //   },
+  // },
 })

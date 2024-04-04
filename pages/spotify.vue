@@ -38,16 +38,22 @@ const router = useRouter();
 const errorMessage = ref<string>('')
 
 const navigateToLogIn = async () => {
-    const res = await fetch('http://localhost:8080/spotify-login-token', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE3MTAyMzUxMjAsImV4cCI6MTcxMDIzODcyMH0.8L1u3ioRxOPcol87swx0k_sbWTQ9arAzDMeJAUqw8Ww`,
-        }
-    })
-    const result = await res.json()
-    console.log(result)
-    window.location.href = `http://localhost:8080/spotify-login/?state=${result.state}`
+    try {
+        const res = await fetch('http://localhost:8080/spotify-login-token', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+            }
+        })
+        const result = await res.json()
+        console.log(result)
+        window.location.href = `http://localhost:8080/spotify-login/?state=${result.state}`
+    }
+    catch (e) {
+        console.error(e)
+        errorMessage.value = 'An error occurred while connecting to Spotify. Please try again later.'
+    }
 }
 </script>
 

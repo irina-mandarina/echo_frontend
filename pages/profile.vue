@@ -8,7 +8,7 @@
             </div>
             <div class="w-full h-1/2 relative opacity-0"></div>
             <h1 class="font-rubik text-2xl">
-                Irina Ahamad
+                {{ user?.username }}
             </h1>
 
         </NuxtLayout>
@@ -16,6 +16,12 @@
 </template>
 
 <script setup lang="ts">
+    import type { User } from '~/models/User'
+    import { useUserStore } from '~/stores/userStore'
+
+    const userStore = useUserStore()
+    userStore.init()
+    let user = computed(() => userStore.user)
 </script>
 
 <style scoped>
