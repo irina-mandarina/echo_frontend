@@ -27,14 +27,11 @@ export const useUserStore = defineStore({
         },
         async logIn(username: string, password: string) {
             try {
-                const { user, jwt } = await logIn(username, password)
+                const { user, jwt, result } = await logIn(username, password)
                 this.user = user
                 setJWT(jwt)
                 this.errorMessage = null
             } catch (error: any) {
-                if (error.status === 401) {
-                    this.errorMessage = 'Invalid username or password'
-                }
                 console.error(error)
                 this.errorMessage = error.message
             }

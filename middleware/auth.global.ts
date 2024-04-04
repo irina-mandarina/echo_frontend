@@ -8,7 +8,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     console.log('authMiddleware')
     const userStore = useUserStore()
 
-    if (from.path !== '/login' && (to.path === '/login' || to.path === '/signup') && getJWT()) {
+    if (!['/login', '/signup'].includes(from.path) && (to.path === '/login' || to.path === '/signup') && getJWT()) {
         if (!userStore.user) {
             userStore.init()
         }

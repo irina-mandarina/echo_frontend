@@ -5,11 +5,8 @@ const graphqlEndpoint = "http://localhost:8080/graphql"
 
 function generateUserQuery(fields: string[] | undefined = undefined) {
   let userFields = `
-    id
     username
-    email
     bio
-    dateOfRegistration
     streamingData {
       episode {
         id
@@ -66,16 +63,14 @@ export async function getUser(username: string | undefined = undefined, fields: 
   return getUser
 }
 
-export async function logIn(username: string, password: string): Promise<any> {
+export async function logIn(identifier: string, password: string): Promise<any> {
   const loginMutation = gql`
-    mutation LogIn($username: String!, $password: String!) {
-      logIn(username: $username, password: $password) {
+    mutation LogIn($identifier: String!, $password: String!) {
+      logIn(identifier: $identifier, password: $password) {
         jwt
         user {
           username
-          email
           bio
-          dateOfRegistration
           streamingData {
             episode {
               id
@@ -112,7 +107,7 @@ export async function logIn(username: string, password: string): Promise<any> {
   const requestHeaders = {
     'Authorization': `Bearer ${getJWT()}`
   }
-  const variables = { username, password }
+  const variables = { identifier, password }
   const { logIn } = await request(graphqlEndpoint, loginMutation, variables) as { logIn: any }
   console.log(logIn)
   return logIn
@@ -125,9 +120,7 @@ export async function signUp(username: string, email: string, password: string):
         jwt
         user {
           username
-          email
           bio
-          dateOfRegistration
           streamingData {
             episode {
               id
