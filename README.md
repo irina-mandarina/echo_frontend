@@ -20,4 +20,15 @@ Week 3: JWT authentication, user registration and login, user CRUD operations, m
     Implement the search functionality [frontend]
     Reseach podcast reccomendation algorithms [backend]
     Start implementation of the podcast reccomendation algorithms [backend]
-    Fix middleware [frontend]
+
+## Sprint 3
+
+### Objectives
+    Fix middleware [frontend] - done 18.04
+    Fix response statuses [backend] - done 18.04
+    Add error handling in login and signup - done 18.04
+    Implement the search functionality [frontend]
+    Reseach podcast reccomendation algorithms [backend]
+    Start implementation of the podcast reccomendation algorithms [backend]
+
+

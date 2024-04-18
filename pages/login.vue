@@ -7,7 +7,7 @@
                 </h1>
                 <div class="flex flex-row mt-4">
                     <div class="flex flex-col w-1/2 mx-auto h-full">
-                        <EchoInput :value="username" @update:value="username=$event" class="my-2" label="Email" validation="" />
+                        <EchoInput :value="identifier" @update:value="identifier=$event" class="my-2" label="Email or username" validation="" />
                         <EchoInput :value="password" @update:value="password=$event"class="my-2" label="Password" validation="" />
                         
                         <div v-if="userStore.errorMessage" class="text-red-500 text-sm">
@@ -40,17 +40,16 @@
 </template>
 
 <script setup lang="ts">
-    import { getJWT } from '~/lib/localStorageUtil';
+    import { getJWT, setJWT } from '~/lib/localStorageUtil';
 import { useUserStore } from '~/stores/userStore'
 
     const userStore = useUserStore()
-    const username = ref('')
+    const identifier = ref('')
     const password = ref('')
 
     async function logIn() {
-        console.log('Logging in: ', username.value, password.value)  
-        await userStore.logIn(username.value, password.value)
-        console.log('JWT: ' + getJWT())
+        console.log('Logging in: ', identifier.value, password.value)  
+        await userStore.logIn(identifier.value, password.value)
         if (userStore.errorMessage) {
             return
         }

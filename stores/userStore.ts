@@ -22,7 +22,7 @@ export const useUserStore = defineStore({
             }
             catch (error: any) {
                 console.error(error)
-                this.errorMessage = error.message
+                this.errorMessage = error.response.errors[0].message
             }
         },
         async logIn(username: string, password: string) {
@@ -33,7 +33,7 @@ export const useUserStore = defineStore({
                 this.errorMessage = null
             } catch (error: any) {
                 console.error(error)
-                this.errorMessage = error.message
+                this.errorMessage = error.response.errors[0].message
             }
         },
         async logOut() {
@@ -50,7 +50,7 @@ export const useUserStore = defineStore({
             }
             catch (error: any) {
                 console.error(error)
-                this.errorMessage = error.message
+                this.errorMessage = error.response.errors[0].message
             }
         }    
     }

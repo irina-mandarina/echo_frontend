@@ -4,7 +4,6 @@ import { getJWT } from '~/lib/localStorageUtil'
 export default defineNuxtRouteMiddleware((to, from) => {
     console.log('authMiddleware')
     const userStore = useUserStore()
-    debugger
     // if the user is trying to acceess a login/signup page and is already logged in, redirect to home
     if (!['/login', '/signup'].includes(from.path) && (to.path === '/login' || to.path === '/signup') && getJWT()) {
         if (!userStore.user) {
@@ -19,10 +18,11 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (to.path !== '/login' && to.path !== '/signup') {
         if (!userStore.user) {
             if (!getJWT()) {
+                console.log('no jwt')
                 return navigateTo('/login')
             }
-            userStore.init()
         }
-        return navigateTo('/login')
+        console.log(to.path)
+        // return navigateTo(to.path)
     }
 })
