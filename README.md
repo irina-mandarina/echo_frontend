@@ -20,3 +20,4 @@ Week 3: JWT authentication, user registration and login, user CRUD operations, m
     Implement the search functionality [frontend]
     Reseach podcast reccomendation algorithms [backend]
     Start implementation of the podcast reccomendation algorithms [backend]
+    Fix middleware [frontend]

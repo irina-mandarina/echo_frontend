@@ -7,6 +7,7 @@ function generateUserQuery(fields: string[] | undefined = undefined) {
   let userFields = `
     username
     bio
+    spotifyConnected
     streamingData {
       episode {
         id
@@ -71,6 +72,7 @@ export async function logIn(identifier: string, password: string): Promise<any> 
         user {
           username
           bio
+          spotifyConnected
           streamingData {
             episode {
               id
