@@ -24,7 +24,8 @@ export const useUserStore = defineStore({
                 console.error(error)
                 if (error.response.status === 401) {
                     removeJWT()
-                    navigateTo('/login')
+                    // navigateTo('/login')
+                    return
                 }
                 this.errorMessage = error.response.errors[0].message
             }

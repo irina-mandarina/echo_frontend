@@ -24,7 +24,7 @@
             
             <!-- Stream data -->
             <div class="p-6 w-11/12 flex mx-auto">
-                <div class="bg-echo-gray rounded-lg w-3/4">
+                <div class="bg-echo-gray rounded-lg w-3/4 p-6">
                     <p class="font-rubik">
                         Last streams
                     </p>
@@ -32,7 +32,7 @@
                     <Stream v-for="stream in user?.streamingData?.slice(-15)" :stream="stream" />
                 </div>
 
-                <div class="">
+                <div class="p-6">
                     <p class="font-rubik text-center">
                         Stats
                     </p>
