@@ -1,17 +1,20 @@
 import { useUserStore } from "~/stores/userStore"
 import { getJWT } from '~/lib/localStorageUtil'
+import { useRouter } from "vue-router"
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
     console.log('authMiddleware')
+    const nuxtApp = useNuxtApp()
+    const router = useRouter()
     const userStore = useUserStore()
     // if the user is trying to acceess a login/signup page and is already logged in, redirect to home
-    console.log((to.path === '/login' || to.path === '/signup'))
-    if (/*from.path !== '/login' && from.path !== '/signup' && */ (to.path === '/login' || to.path === '/signup') && getJWT()) {
+    /*from.path !== '/login' && from.path !== '/signup' && */ 
+    if ((to.path === '/login' || to.path === '/signup') && getJWT()) {
         if (!userStore.user) {
             await userStore.init()
         }
         if (userStore.user) {
-            return navigateTo('/')
+            return nuxtApp.runWithContext(() => navigateTo('/'))
         }
         return
     }
@@ -23,7 +26,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         if (!userStore.user) {
             if (!getJWT()) {
                 console.log('no jwt')
-                return navigateTo('/login')
+                return nuxtApp.runWithContext(() => navigateTo('/login'))
             }
         }
         // return navigateTo(to.path)
