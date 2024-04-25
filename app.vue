@@ -14,8 +14,8 @@
 
 <style>
     @font-face {
-        src: url("/assets/RubikOne-Regular.ttf");
-        font-family: 'Rubik One';
+        src: url("assets/Franklin Gothic Demi Cond Regular.ttf");
+        font-family: 'Franklin Gothic Demi Condensed';
     }
 
     body {
@@ -31,8 +31,8 @@
         height: 100%;
     }
 
-    .font-rubik {
-        font-family: 'Rubik One', sans-serif;
+    .font-franklin {
+        font-family: 'Franklin Gothic Demi Condensed', sans-serif;
     }
 
     .font-roboto {
@@ -41,24 +41,18 @@
 
     .font-roboto-light {
         font-family: 'Roboto', serif;
-        font-weight: 300;
+        font-weight: 200;
     }
 
-    .font-lato-light {
-        font-family: "Lato", sans-serif;
-        font-weight: 300;
-        font-style: normal;
+    .echo-scrollbar::-webkit-scrollbar-track {
+       background: #f1f1f1; /* Color of the scrollbar track */
     }
 
-    .font-lato-regular {
-        font-family: "Lato", sans-serif;
-        font-weight: 400;
-        font-style: normal;
+    .echo-scrollbar::-webkit-scrollbar-thumb {
+        background: #888; /* Color of the scrollbar thumb */
     }
 
-    .font-lato-bold {
-        font-family: "Lato", sans-serif;
-        font-weight: 700;
-        font-style: normal;
+    .echo-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #ff0000; /* Color of the scrollbar thumb on hover */
     }
 </style>

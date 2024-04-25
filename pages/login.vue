@@ -1,8 +1,8 @@
 <template>
     <div class="layout-container">
         <NuxtLayout class="w-full">
-            <div class="w-1/2 h-1/3 m-auto bg-echo-gray rounded-lg p-6 flex flex-col">
-                <h1 class="font-rubik text-center w-full">
+            <div class="w-1/2 m-auto bg-echo-gray rounded-lg p-6 flex flex-col">
+                <h1 class="font-franklin text-center w-full">
                     Log in
                 </h1>
                 <div class="flex flex-row mt-4">

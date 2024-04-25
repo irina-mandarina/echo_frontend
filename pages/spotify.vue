@@ -2,7 +2,7 @@
     <div class="layout-container">
         <NuxtLayout>
             <div class="flex flex-col">
-                <p class="text-2xl p-4 font-rubik text-green-600 w-full text-center">
+                <p class="text-2xl p-4 font-franklin text-green-600 w-full text-center">
                     Connect to Spotify
                 </p>
                 <p class="font-lato-light text-xl p-4 w-1/2 mx-auto">

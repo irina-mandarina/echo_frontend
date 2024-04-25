@@ -13,7 +13,7 @@
                 <div class="w-40 relative opacity-0"> &nbsp; </div>
 
                 <div class="">
-                    <p class="font-rubik text-2xl">
+                    <p class="font-franklin text-2xl">
                         {{ user?.username }}
                     </p>
                     <p>
@@ -25,7 +25,7 @@
             <!-- Stream data -->
             <div class="p-6 w-11/12 flex mx-auto">
                 <div class="bg-echo-gray rounded-lg w-3/4 p-6">
-                    <p class="font-rubik">
+                    <p class="font-franklin">
                         Last streams
                     </p>
                     <!-- Recent streams -->
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="p-6">
-                    <p class="font-rubik text-center">
+                    <p class="font-franklin text-center">
                         Stats
                     </p>
                 </div>

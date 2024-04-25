@@ -22,12 +22,12 @@ export const useUserStore = defineStore({
             }
             catch (error: any) {
                 console.error(error)
-                if (error.response.status === 401) {
+                if (error.response?.status === 401) {
                     removeJWT()
                     // navigateTo('/login')
                     return
                 }
-                this.errorMessage = error.response.errors[0].message
+                this.errorMessage = error.response?.errors[0].message
             }
         },
         async logIn(username: string, password: string) {
