@@ -1,5 +1,6 @@
 import { request, gql } from 'graphql-request'
 import { getJWT } from '~/lib/localStorageUtil'
+import type { User } from '~/models/User'
     
 const graphqlEndpoint = "http://localhost:8080/graphql"
 
@@ -64,6 +65,25 @@ export async function getUser(username: string | undefined = undefined, fields: 
   return getUser
 }
 
+export async function getUsers(query: string | undefined = undefined, fields: string[] | undefined = undefined): Promise<User[]> {
+  const userQuery = gql`
+    query GetUsers($query: String) {
+      getUsers(query: $query) {
+        username
+        bio
+      }
+    }
+  `
+  const requestHeaders = {
+    'Authorization': `Bearer ${getJWT()}`
+  }
+
+  const variables = { query }
+  const { getUsers }  = await request(graphqlEndpoint!, userQuery, variables, requestHeaders) as { getUsers: any }
+  console.log(getUsers)
+  return getUsers
+}
+
 export async function logIn(identifier: string, password: string): Promise<any> {
   const loginMutation = gql`
     mutation LogIn($identifier: String!, $password: String!) {
@@ -111,7 +131,6 @@ export async function logIn(identifier: string, password: string): Promise<any> 
   }
   const variables = { identifier, password }
   const { logIn } = await request(graphqlEndpoint, loginMutation, variables) as { logIn: any }
-  console.log(logIn)
   return logIn
 }
 

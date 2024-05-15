@@ -1,18 +1,62 @@
 <template>
-    <div class="absolute inset-[16%] flex w-2/3 block bg-echo-white rounded-xl shadow-lg">
+    <button class="absolute inset-[16%] flex flex-col w-2/3 block bg-echo-white rounded-xl shadow-lg">
+        <!-- sector titles -->
         <div class="w-full h-min justify-evenly flex border-b border-b-1 border-b-echo-gray font-lato-bold">
-            <span class="cursor-pointer border-b border-b-2 py-2 px-4 border-b-echo-orange"
-                  v-for="i in ['Podcasts', 'Episodes', 'Profiles']">
+            <span
+                v-for="i in resultPages"
+                :class="`cursor-pointer border-b border-b-2 py-2 px-4 ${resultPage == i ? 'border-b-echo-orange' : 'border-b-echo-gray'}`"
+                @click="resultPage = i"
+            >
                 {{ i }}
             </span>
         </div>
         <div class="p-3">
-         <PodcastSearchResult />
+         <PodcastSearchResult v-if="resultPage === resultPages[0]" />
+         <PodcastSearchResult v-if="resultPage === resultPages[1]" />
+         <UserSearchResult v-if="resultPage === resultPages[2]" v-for="user in userResults" :user="user" />
         </div>
-    </div>
+    </button>
 </template>
 
 <script setup lang="ts">
+    import { GraphQLError } from 'graphql';
+    import type { ComputedGetter } from 'vue';
+    import type { Episode } from '~/models/Episode';
+    import type { Show } from '~/models/Show';
+    import type { User } from '~/models/User';
+    import { getUsers } from '~/requests/userRequests';
+
+    const props = defineProps<{ query: string }>()
+    
+    const resultPages = ['Podcasts', 'Episodes', 'Profiles']
+    const resultPage = ref(resultPages[0])
+
+    const podcastResults = computed<Show[]>(() => {
+        return []
+    })
+
+    const episodeResults = computed<Episode[]>(() => [])
+    const userResults = ref<User[]>([])
+
+    watch(() => props.query, async () => {
+        if (!props.query) return
+        if (resultPage.value === resultPages[2]) {
+            try {
+                userResults.value = await getUsers(props.query)
+                console.log('userResults', userResults.value)
+            } catch (error: any) {
+                console.error(error)
+                if (error.response.status) {
+                    navigateTo('/login')
+                }
+            } 
+        }
+    })
+
+    function changeResultPage(page: string) {
+        resultPage.value = page
+
+    }
 </script>
 
 <style scoped>
