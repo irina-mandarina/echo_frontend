@@ -9,7 +9,7 @@
             </div>
         </NuxtLink>
 
-        <div class="w-1/3 flex h-min">
+        <div class="w-1/3 flex flex-row h-min">
             <SearchBar class="w-1/2" />
         </div>
 

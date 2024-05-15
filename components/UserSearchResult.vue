@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row p-2 h-full">
+    <NuxtLink :to="`/users/${user?.username}`" class="flex flex-row p-2 h-24">
         <div class="w-1/10 h-full">
             <img src="https://via.placeholder.com/50" alt="user profile picture" class="w-full h-full" />
         </div>
@@ -11,7 +11,7 @@
                 {{ user.bio }}
             </p>
         </div>
-    </div>
+    </NuxtLink>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,9 @@
 <template>
     <button class="absolute inset-[16%] flex flex-col w-2/3 block bg-echo-white rounded-xl shadow-lg">
+        <i
+            class="absolute top-2 right-3 fas fa-times my-auto hover:text-orange-600 duration-100 cursor-pointer"
+            @click="$emit('close')"
+        ></i>
         <!-- sector titles -->
         <div class="w-full h-min justify-evenly flex border-b border-b-1 border-b-echo-gray font-lato-bold">
             <span
@@ -39,6 +43,14 @@
     const userResults = ref<User[]>([])
 
     watch(() => props.query, async () => {
+        await updateResults()
+    })
+
+    watch(() => resultPage.value, async () => {
+        await updateResults()
+    })
+
+    async function updateResults() {
         if (!props.query) return
         if (resultPage.value === resultPages[2]) {
             try {
@@ -51,7 +63,7 @@
                 }
             } 
         }
-    })
+    }
 
     function changeResultPage(page: string) {
         resultPage.value = page
