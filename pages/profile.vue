@@ -17,7 +17,7 @@
                 <div class="ml-40 p-4 w-1/2">
                     <div class="flex flex-row justify-between">
                         <p class="font-franklin text-3xl">
-                            @{{ user?.username ?? "irina" }}
+                            @{{ user?.username }}
                         </p>
                         <div class="flex flex-row">
                             <p class="font-franklin text-2xl px-4">
@@ -29,13 +29,7 @@
                         </div>
                     </div>
                     <p class="font-roboto-light p-2">
-                        This is my bio. I like listening to podcasts.
-                        This is my bio. I like listening to podcasts.
-                        This is my bio. I like listening to podcasts.
-                        This is my bio. I like listening to podcasts.
-                        This is my bio. I like listening to podcasts.
-                        This is my bio. I like listening to podcasts.
-                        This is my bio. I like listening to podcasts.
+                        {{ user?.bio }}
                     </p>
                 </div>
 

@@ -17,7 +17,7 @@
                 <div class="ml-40 p-4 w-1/2">
                     <div class="flex flex-row justify-between">
                         <p class="font-franklin text-3xl">
-                            @{{ user?.username ?? "irina" }}
+                            @{{ user?.username }}
                         </p>
                         <div class="flex flex-row">
                             <p class="font-franklin text-2xl px-4">
@@ -85,14 +85,22 @@
     import { getUser } from '~/requests/userRequests';
     import { useUserStore } from '~/stores/userStore'
 
-    let user: any
+    let user = ref()
     const route = useRoute()
     const username: string = route.params.username.toString()
-    // const userStore = useUserStore()
+    const userStore = useUserStore()
 
     onBeforeMount(async () => {
-        // await userStore.init()
-        user = await getUser(username)
+        await userStore.init()
+        if (username === userStore.user?.username) {
+            navigateTo('/profile')
+        }
+        try {
+            user.value = await getUser(username)
+        }
+        catch(error: any) {
+            console.error(error)
+        }
     })
 </script>
 
