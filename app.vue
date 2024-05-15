@@ -41,18 +41,30 @@
 
     .font-roboto-light {
         font-family: 'Roboto', serif;
-        font-weight: 200;
+        font-weight: 300;
+    }
+    ::-webkit-scrollbar {
+    width: 15px;
+    margin: 20px;
+    padding: 20px;
+}
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #c7b1b1;
+        border-radius: 10px;
     }
 
-    .echo-scrollbar::-webkit-scrollbar-track {
-       background: #f1f1f1; /* Color of the scrollbar track */
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #b2b1b1;
+        border-radius: 10px;
     }
 
-    .echo-scrollbar::-webkit-scrollbar-thumb {
-        background: #888; /* Color of the scrollbar thumb */
-    }
-
-    .echo-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #ff0000; /* Color of the scrollbar thumb on hover */
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #c3b9b4;
+        filter: drop-shadow(0 20px 20px rgba(90, 133, 168, 0.79));
+        transition: all 400ms ease-in-out;
     }
 </style>
