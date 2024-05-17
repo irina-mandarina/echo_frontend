@@ -35,7 +35,7 @@ function generateUserQuery(fields: string[] | undefined = undefined) {
           }
         }
       }
-      timestamp
+      timestamps
     }
   `
 
