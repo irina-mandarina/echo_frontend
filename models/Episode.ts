@@ -18,3 +18,15 @@ export type Image = {
     width: number
     height: number
 }
+
+export type EpisodeSearchResult = {
+    name: string
+    show: string
+    release_date: Date
+    images: {
+        url: string
+    }[]
+    uri: string
+    id: string
+    description: string
+}

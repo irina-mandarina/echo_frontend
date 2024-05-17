@@ -19,7 +19,7 @@ const typeDefs = gql`
         id: ID!
             title: String!
             description: String
-        audioPreviewUrl: String
+        audio_preview_url: String
         uri: String
         images: [Image]
         show: Show
@@ -37,7 +37,7 @@ const typeDefs = gql`
             name: String!
             publisher: String
         description: String
-        totalEpisodes: Int
+        total_episodes: Int
         images: [Image]
     }
     

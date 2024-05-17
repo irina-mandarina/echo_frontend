@@ -5,16 +5,19 @@
         </div>
         <div class="w-9/10 h-full">
             <h3 class="font-lato-light text-lg">
-                Podcast Title
+                {{ podcast.name }}
             </h3>
             <p class="text-sm">
-                Podcast Description
+                {{ podcast.publisher }}
             </p>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+    import type { ShowSearchResult } from '~/models/Show';
+
+    defineProps<{ podcast: ShowSearchResult }>()
 </script>
 
 <style scoped>

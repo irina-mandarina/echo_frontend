@@ -12,9 +12,9 @@ function generateUserQuery(fields: string[] | undefined = undefined) {
     streamingData {
       episode {
         id
-        title
+        name
         description
-        audioPreviewUrl
+        audio_preview_url
         uri
         images {
           url
@@ -27,7 +27,7 @@ function generateUserQuery(fields: string[] | undefined = undefined) {
           name
           publisher
           description
-          totalEpisodes
+          total_episodes
           images {
             url
             width
@@ -93,38 +93,9 @@ export async function logIn(identifier: string, password: string): Promise<any> 
           username
           bio
           spotifyConnected
-          streamingData {
-            episode {
-              id
-              title
-              description
-              audioPreviewUrl
-              uri
-              images {
-                url
-                width
-                height
-              }
-              show {
-                id
-                uri
-                name
-                publisher
-                description
-                totalEpisodes
-                images {
-                  url
-                  width
-                  height
-                }
-              }
-            }
-            timestamp
         }
       }
-
     }
-  }
   `
   const requestHeaders = {
     'Authorization': `Bearer ${getJWT()}`
@@ -142,34 +113,6 @@ export async function signUp(username: string, email: string, password: string):
         user {
           username
           bio
-          streamingData {
-            episode {
-              id
-              title
-              description
-              audioPreviewUrl
-              uri
-              images {
-                url
-                width
-                height
-              }
-              show {
-                id
-                uri
-                name
-                publisher
-                description
-                totalEpisodes
-                images {
-                  url
-                  width
-                  height
-                }
-              }
-            }
-            timestamp
-          }
         }
       }
     }

@@ -15,8 +15,8 @@
             </span>
         </div>
         <div class="p-3">
-         <PodcastSearchResult v-if="resultPage === resultPages[0]" />
-         <PodcastSearchResult v-if="resultPage === resultPages[1]" />
+         <EpisodeSearchResult v-if="resultPage === resultPages[0]" v-for="episode in episodeResults" :episode="episode" />
+         <PodcastSearchResult v-if="resultPage === resultPages[1]" v-for="podcast in podcastResults" :podcast="podcast" />
          <UserSearchResult v-if="resultPage === resultPages[2]" v-for="user in userResults" :user="user" />
         </div>
     </button>
@@ -25,9 +25,10 @@
 <script setup lang="ts">
     import { GraphQLError } from 'graphql';
     import type { ComputedGetter } from 'vue';
-    import type { Episode } from '~/models/Episode';
-    import type { Show } from '~/models/Show';
+    import type { Episode, EpisodeSearchResult } from '~/models/Episode';
+    import type { Show, ShowSearchResult } from '~/models/Show';
     import type { User } from '~/models/User';
+    import { getEpisodes, getShows } from '~/requests/spotifyRequests';
     import { getUsers } from '~/requests/userRequests';
 
     const props = defineProps<{ query: string }>()
@@ -35,11 +36,8 @@
     const resultPages = ['Podcasts', 'Episodes', 'Profiles']
     const resultPage = ref(resultPages[0])
 
-    const podcastResults = computed<Show[]>(() => {
-        return []
-    })
-
-    const episodeResults = computed<Episode[]>(() => [])
+    const podcastResults = ref<ShowSearchResult[]>([])
+    const episodeResults = ref<EpisodeSearchResult[]>([])
     const userResults = ref<User[]>([])
 
     watch(() => props.query, async () => {
@@ -52,7 +50,27 @@
 
     async function updateResults() {
         if (!props.query) return
-        if (resultPage.value === resultPages[2]) {
+        if (resultPage.value === resultPages[0]) {
+            try {
+                podcastResults.value = await getShows(props.query, 10, 1)
+            } catch (error: any) {
+                console.error(error)
+                if (error.response.status) {
+                    navigateTo('/login')
+                }
+            }
+        } 
+        else if (resultPage.value === resultPages[1]) {
+            try {
+                episodeResults.value = await getEpisodes(props.query, 10, 1)
+            } catch (error: any) {
+                console.error(error)
+                if (error.response.status) {
+                    navigateTo('/login')
+                }
+            }
+        } 
+        else if (resultPage.value === resultPages[2]) {
             try {
                 userResults.value = await getUsers(props.query)
                 console.log('userResults', userResults.value)
@@ -63,11 +81,6 @@
                 }
             } 
         }
-    }
-
-    function changeResultPage(page: string) {
-        resultPage.value = page
-
     }
 </script>
 
