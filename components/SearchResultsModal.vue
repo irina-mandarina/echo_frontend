@@ -32,6 +32,7 @@
     import { getUsers } from '~/requests/userRequests';
 
     const props = defineProps<{ query: string }>()
+    const emit = defineEmits<{ close: any }>()
     
     const resultPages = ['Podcasts', 'Episodes', 'Profiles']
     const resultPage = ref(resultPages[0])
@@ -55,7 +56,7 @@
                 podcastResults.value = await getShows(props.query, 10, 1)
             } catch (error: any) {
                 console.error(error)
-                if (error.response.status) {
+                if (error.response.status == 401) {
                     navigateTo('/login')
                 }
             }
@@ -65,7 +66,7 @@
                 episodeResults.value = await getEpisodes(props.query, 10, 1)
             } catch (error: any) {
                 console.error(error)
-                if (error.response.status) {
+                if (error.response.status == 401) {
                     navigateTo('/login')
                 }
             }
@@ -75,8 +76,8 @@
                 userResults.value = await getUsers(props.query)
                 console.log('userResults', userResults.value)
             } catch (error: any) {
-                console.error(error)
-                if (error.response.status) {
+                console.error(error.response.status)
+                if (error.response.status == 401) {
                     navigateTo('/login')
                 }
             } 
