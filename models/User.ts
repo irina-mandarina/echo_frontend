@@ -1,15 +1,10 @@
-import type { Episode } from "./Episode"
+import type { Stream } from "./StreamingData"
 
 export type User = {
     username: string | null
     email: string | null
     bio: string | null
     dateOfRegistration: string | null
-    streamingData: StreamingData[] | null
+    streamingData: Stream[] | null
     spotifyConnected: boolean
-}
-
-export type StreamingData = {
-    episode: Episode
-    timestamp: string
 }

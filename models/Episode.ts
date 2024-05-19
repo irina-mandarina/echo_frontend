@@ -11,6 +11,7 @@ export type Episode = {
     resume_point: object | undefined // The user’s most recent position in the episode. Set if the supplied access token is a user token and has the scope user-read-playback-position.
     uri: string // The Spotify URI for the episode.
     show: Show // The show on which the episode belongs.
+    description: string // The show’s description. This field may contain HTML tags.
 }
 
 export type Image = {

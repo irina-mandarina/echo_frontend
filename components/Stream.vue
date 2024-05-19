@@ -18,10 +18,9 @@
 </template>
 
 <script setup lang="ts">
-    import type { StreamingData } from '~/models/User'
+    import type { Stream } from '~/models/StreamingData'
 
     defineProps<{
-        // stream: StreamingData
-        stream: any
+        stream: Stream
     }>()
 </script>

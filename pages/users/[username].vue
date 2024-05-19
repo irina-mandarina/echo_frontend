@@ -53,28 +53,8 @@
                 </div>
             </div>
             
-            <!-- Stream data -->
-            <div class="p-6 w-11/12 h-[600px] flex mx-auto overflow-hidden">
-
-                <!-- Recent streams -->
-                <div class="flex flex-col bg-echo-gray rounded-lg w-3/4 p-1 overflow-hidden">
-                    <p class="h-1/12 font-franklin text-2xl p-4">
-                        Recents streams
-                    </p>
-                    <div class="h-full overflow-y-auto whitespace-nowrap">
-                        <Stream class="border-t border-echo-dark-gray" v-for="i in 15" :stream="i" />
-                        <!-- <Stream v-for="stream in user?.streamingData?.slice(-15)" :stream="stream" /> -->
-                    </div>
-                </div>
-
-                <!-- Stats -->
-                <div class="p-6">
-                    <p class="font-franklin text-2xl p-4">
-                        Stats
-                    </p>
-                </div>
-                
-            </div>
+           <!-- Stream data -->
+           <StreamingDataList :streaming-data="user?.streamingData" />
 
         </NuxtLayout>
     </div>
