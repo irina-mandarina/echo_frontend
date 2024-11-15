@@ -1,34 +1,42 @@
-# Echo - Podcast statistics and analytics
 
+---
 
+### Echo - Frontend
 
-## Sprint 1
+The frontend of the **Echo** application, a user interface for discovering and managing podcasts. Built using to provide a seamless and engaging experience.
 
-Week 1: Project description, initial design, research and planning
+---
 
-Week 2: Skeleton of the frontend, implementing the Spotify API, setting up the backend
+## Features
 
-Week 3: JWT authentication, user registration and login, user CRUD operations, mongo db setup and utilising Mongoose
+1. **User Authentication**:
+   - Allows users to log in and connect their Spotify account.
+2. **Search**:
+   - Provides an intuitive search bar with real-time suggestions.
+3. **Recommendations**:
+   - Displays personalized podcast recommendations.
+4. **Now Playing**:
+   - Shows the currently playing podcast episode with playback controls.
 
-## Sprint 2
+---
 
-### Objectives:
-    Start documenting!!
-    Finish the Spotify authentication ( fix bugs ) both in backend and frontend and frontend
-    Fix bugs when saving the podcast ids to mongo [backend]
-    Display user profile and podcasts [frontend]
-    Implement the search functionality [frontend]
-    Reseach podcast reccomendation algorithms [backend]
-    Start implementation of the podcast reccomendation algorithms [backend]
+## Architecture
 
-## Sprint 3
+- **Vue.js**: Frontend framework for building user interfaces.
+- **Tailwind CSS**: For modern and responsive styling.
+- **Nuxt**: Build tool for fast development and optimized production builds.
 
-### Objectives
-    Fix middleware [frontend] - done 18.04
-    Fix response statuses [backend] - done 18.04
-    Add error handling in login and signup - done 18.04
-    Implement the search functionality [frontend]
-    Reseach podcast reccomendation algorithms [backend]
-    Start implementation of the podcast reccomendation algorithms [backend]
+---
 
+## How It Works
 
+1. **API Integration**:
+   - Fetches user data, podcast metadata, and recommendations from the backend.
+
+2. **State Management**:
+   - Uses Vue's `ref` and `computed` for managing reactive states.
+   - User data and search queries are stored locally for real-time interactions.
+
+3. **UI/UX Design**:
+   - Utilizes Tailwind CSS for responsive and accessible design.
+   - Transitions and modals are animated for smooth user experiences.
