@@ -25,6 +25,7 @@ The frontend of the **Echo** application, a user interface for discovering and m
 - **Vue.js**: Frontend framework for building user interfaces.
 - **Tailwind CSS**: For modern and responsive styling.
 - **Nuxt**: Build tool for fast development and optimized production builds.
+- **ChartJs**: For displaying real-time statistics.
 
 ---
 
@@ -38,5 +39,5 @@ The frontend of the **Echo** application, a user interface for discovering and m
    - User data and search queries are stored locally for real-time interactions.
 
 3. **UI/UX Design**:
-   - Utilizes Tailwind CSS for responsive and accessible design.
+   - Utilizes Tailwind CSS for accessible design.
    - Transitions and modals are animated for smooth user experiences.
